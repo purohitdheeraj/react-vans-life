@@ -5,8 +5,16 @@ import {
 	RouterProvider,
 } from "react-router-dom";
 import { Layout } from "./components";
+import "./reset.css";
 import "./App.css";
-import { About, Home, Vans } from "./pages";
+import {
+	About,
+	Home,
+	Host,
+	Login,
+	VanDetail,
+	Vans,
+} from "./pages";
 
 const App = () => {
 	const router = createBrowserRouter(
@@ -15,6 +23,9 @@ const App = () => {
 				<Route index element={<Home />} />
 				<Route path="about" element={<About />} />
 				<Route path="vans" element={<Vans />} />
+				<Route path="vans/:id" element={<VanDetail />} />
+				<Route path="host" element={<Host />} />
+				<Route path="login" element={<Login />} />
 			</Route>
 		)
 	);

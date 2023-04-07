@@ -4,7 +4,7 @@
 	--FONT-COLOR-BLACK: #161616;
 	--LINK-COLOR-GRAY: #4d4d4d;
 	--FOOTER-BG-COLOR: #252525;
-	--FOOTER-COLOR: #252525;
+	--FOOTER-COLOR: #aaaaaa;
 
 	/* general color */
 	--BLACK: #000;
@@ -17,9 +17,74 @@ html {
 }
 
 body {
-	max-width: 1024px;
+	max-width: 1280px;
 	font-size: 1.6rem;
 	padding: 0;
 	margin: 0 auto;
 	border: 1px solid;
 }
+
+/* Header */
+.header {
+	display: flex;
+	align-items: center;
+	padding: 3.6rem;
+}
+
+.header-logo {
+	color: var(--BLACK);
+}
+.van-icon {
+	color: var(--FOOTER-BG-COLOR);
+}
+
+.nav {
+	margin-left: auto;
+	margin-right: 1.5em;
+}
+
+.nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+	gap: 2rem;
+}
+
+.nav ul li a {
+	text-decoration: none;
+	color: var(--LINK-COLOR-GRAY);
+}
+
+.nav ul li a:hover {
+	text-decoration: underline;
+	color: var(--FOOTER-BG-COLOR);
+}
+
+.active {
+	font-weight: 600;
+}
+
+.active svg {
+	color: var(--FOOTER-BG-COLOR);
+	fill: var(--FOOTER-COLOR);
+}
+
+.header svg {
+	min-width: 2.4rem;
+}
+/* Footer */
+.footer {
+	background: var(--FOOTER-BG-COLOR);
+	color: var(--FOOTER-COLOR);
+	padding: 2.5rem;
+	text-align: center;
+}
+
+/* Section - Pages */
+section[class*="page"] {
+	min-height: 50vh;
+	display: grid;
+	place-content: center;
+}
+
+/* Error Boundary */

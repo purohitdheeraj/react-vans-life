@@ -79,3 +79,12 @@ body {
 	padding: 2.5rem;
 	text-align: center;
 }
+
+/* Section - Pages */
+section[class*="page"] {
+	min-height: 50vh;
+	display: grid;
+	place-content: center;
+}
+
+/* Error Boundary */

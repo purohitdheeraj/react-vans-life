@@ -2,10 +2,10 @@
 
 ### Features
 
-- [ ] Routes
-- [ ] Home
+- [x] Routes
+- [x] Home
 - [ ] About
 - [ ] Vans
 - [ ] VanDetail
 - [ ] Form
-- [ ] CSS - Basic Layout and States
+- [x] CSS - Basic Layout and States

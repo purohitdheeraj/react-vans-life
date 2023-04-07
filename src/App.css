@@ -5,7 +5,7 @@
 	--LINK-COLOR-GRAY: #4d4d4d;
 	--FOOTER-BG-COLOR: #252525;
 	--FOOTER-COLOR: #aaaaaa;
-
+	--CTA-LT-ORANGE: #ffcc8d;
 	/* general color */
 	--BLACK: #000;
 	--WHITE: #fff;
@@ -144,6 +144,59 @@ body {
 	background: var(--CTA-COLOR);
 	margin-top: 5rem;
 	font-weight: 700;
+}
+
+/* About Page */
+
+.about-page {
+}
+
+.about-info {
+	padding: 5rem 2.5rem;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.about-info h2 {
+	font-size: 3.2rem;
+	line-height: 3.8rem;
+	font-weight: 700;
+}
+
+.about-info p {
+	margin-top: 3rem;
+	line-height: 2.2rem;
+	font-weight: 500;
+}
+
+.banner {
+	height: 40rem;
+}
+
+.banner img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	aspect-ratio: 1/1;
+}
+
+.cta-wrapper {
+	padding: 3rem 2.5rem;
+	background: var(--CTA-LT-ORANGE);
+	border-radius: 5px;
+	margin-top: 5.5rem;
+}
+
+.cta-wrapper h3 {
+	max-width: 54rem;
+	font-size: 2.4rem;
+	line-height: 3rem;
+	font-weight: 700;
+}
+
+.cta-wrapper .link-btn {
+	max-width: 18rem;
+	margin-top: 2.5rem;
 }
 
 /* Footer */

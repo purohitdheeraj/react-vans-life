@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { getVans } from "../api";
 import { useFetch } from "../hooks/useFetch";
 
@@ -18,7 +19,9 @@ const Vans = () => {
 	const vansEl = vans.map((van) => {
 		return (
 			<div key={van.id} className="van">
-				<img src={van.imageUrl} alt={van.name} />
+				<Link to={van.id}>
+					<img src={van.imageUrl} alt={van.name} />
+				</Link>
 
 				<div className="van-info">
 					<h3>{van.name}</h3>

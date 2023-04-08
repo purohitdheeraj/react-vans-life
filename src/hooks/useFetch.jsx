@@ -6,21 +6,21 @@ import { useCallback, useEffect, useState } from "react";
 
 */
 
-export const useFetch = (apiCall) => {
+export const useFetch = (apiCall, id) => {
 	const [data, setData] = useState([]);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [error, setError] = useState(null);
 
 	const fetchData = useCallback(async () => {
 		try {
-			const response = await apiCall();
+			const response = await apiCall(id);
 			setData(response);
 		} catch (err) {
 			setError(err);
 		} finally {
 			setIsLoaded(true);
 		}
-	}, [apiCall]);
+	}, [apiCall, id]);
 
 	useEffect(() => {
 		let isMounted = true;

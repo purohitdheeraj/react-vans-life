@@ -4,7 +4,7 @@
 
 - [x] Routes
 - [x] Home
-- [ ] About
+- [x] About
 - [ ] Vans
 - [ ] VanDetail
 - [ ] Form

@@ -16,6 +16,7 @@ import {
 	Vans,
 	PageNotFound,
 } from "./pages";
+import "./server"
 
 const App = () => {
 	const router = createBrowserRouter(

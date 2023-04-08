@@ -148,9 +148,6 @@ body {
 
 /* About Page */
 
-.about-page {
-}
-
 .about-info {
 	padding: 5rem 2.5rem;
 	width: 70%;
@@ -197,6 +194,49 @@ body {
 .cta-wrapper .link-btn {
 	max-width: 18rem;
 	margin-top: 2.5rem;
+}
+
+/* vans-page */
+.vans-page {
+	padding: 5.5rem 2.5rem;
+}
+
+.vans-page h2 {
+	margin: 2.5rem 0;
+	font-size: 3.2rem;
+	font-weight: 700;
+}
+
+.vans-container {
+	display: grid;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(23rem, 1fr)
+	);
+	gap: 3rem;
+}
+
+.van-info {
+	display: flex;
+	margin-top: 1rem;
+	align-items: flex-start;
+}
+.van-price {
+	margin-left: auto;
+}
+
+.van img {
+	border-radius: 5px;
+}
+
+.van-type {
+	border: 1px solid;
+	padding: .5rem 1rem;
+	text-align: center;
+	max-width: 10rem;
+	font-weight: 600;
+	border-radius: 5px;
+	text-transform: capitalize;
 }
 
 /* Footer */

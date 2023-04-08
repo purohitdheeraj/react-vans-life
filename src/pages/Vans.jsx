@@ -1,49 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import { getVans } from "../api";
+import { useFetch } from "../hooks/useFetch";
 
 const Vans = () => {
-	const [vans, setVans] = useState([]);
-	const [isLoaded, setIsLoaded] = useState(false);
-	const [error, setError] = useState(null);
+	const { data: vans, isLoaded, error } = useFetch(getVans);
 
-	async function getVans() {
-		const response = await fetch("/api/vans");
-		if (!response.ok) {
-			throw Error(
-				`${response.statusText} ${response.status}
-				`
-			);
-		}
-		const parseResponse = await response.json();
-		return parseResponse.vans;
-	}
-
-	useEffect(() => {
-		let didCancel = false;
-
-		async function loadData() {
-			try {
-				const response = await getVans();
-				if (!didCancel) {
-					console.log(response);
-					setVans(response);
-				}
-			} catch (err) {
-				if (!didCancel) {
-					setError(err);
-				}
-			} finally {
-				if (!didCancel) {
-					setIsLoaded(true);
-				}
-			}
-		}
-
-		loadData();
-
-		return () => {
-			didCancel = true;
-		};
-	}, []);
+	console.log(vans);
 
 	if (!isLoaded) {
 		return <div>Loading...</div>;
@@ -53,7 +15,31 @@ const Vans = () => {
 		return <div> Error: {error.message}</div>;
 	}
 
-	return <div>Vans</div>;
+	const vansEl = vans.map((van) => {
+		return (
+			<div key={van.id} className="van">
+				<img src={van.imageUrl} alt={van.name} />
+
+				<div className="van-info">
+					<h3>{van.name}</h3>
+					<p className="van-price">
+						<strong>${van.price}</strong>
+						<br />
+						/day
+					</p>
+				</div>
+
+				<p className="van-type">{van.type}</p>
+			</div>
+		);
+	});
+
+	return (
+		<section className="vans-page">
+			<h2>Explore our van options</h2>
+			<main className="vans-container">{vansEl}</main>
+		</section>
+	);
 };
 
 export default Vans;

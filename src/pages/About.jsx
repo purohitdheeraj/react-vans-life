@@ -34,7 +34,7 @@ const About = () => {
 					<Link
 						to="/vans"
 						relative="path"
-						className="link-btn"
+						className="link-btn hover-btn"
 					>
 						Explore our vans
 					</Link>

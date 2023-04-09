@@ -27,7 +27,6 @@ const VanDetail = () => {
 					to=".."
 					relative="path"
 					className="back-vans-link styled-link"
-				
 				>
 					<FaArrowLeft className="arrow-left" />
 					Back To Vans
@@ -43,7 +42,7 @@ const VanDetail = () => {
 					/day
 				</p>
 				<p>{van.description}</p>
-				<button to="/" className="link-btn btn">
+				<button to="/" className="link-btn btn hover-btn">
 					Rent this van
 				</button>
 			</div>

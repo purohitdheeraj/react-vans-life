@@ -5,7 +5,7 @@
 - [x] Routes
 - [x] Home
 - [x] About
-- [ ] Vans
-- [ ] VanDetail
-- [ ] Form
+- [x] Vans
+- [x] VanDetail
+- [x] Form
 - [x] CSS - Basic Layout and States

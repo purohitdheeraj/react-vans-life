@@ -13,7 +13,7 @@ const Home = () => {
 					movement. Rent the perfect van to make your
 					perfect road trip.
 				</p>
-				<Link to="vans" className="link-btn home-cta">
+				<Link to="vans" className="link-btn home-cta hover-btn">
 					Find Your Van
 				</Link>
 			</div>

@@ -26,7 +26,8 @@ const VanDetail = () => {
 				<Link
 					to=".."
 					relative="path"
-					className="back-vans-link"
+					className="back-vans-link styled-link"
+				
 				>
 					<FaArrowLeft className="arrow-left" />
 					Back To Vans

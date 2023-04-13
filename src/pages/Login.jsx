@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import {
+	Link,
+	useLocation,
+} from "react-router-dom";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState(null);
+	const navigateMessage = useLocation();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -23,6 +27,9 @@ const Login = () => {
 	return (
 		<section className="login-page">
 			<h2>Sign in to your account</h2>
+			<p className="re-direct">
+				{navigateMessage.state?.message}
+			</p>
 			<form
 				onSubmit={submitHandler}
 				className="login-form form"
@@ -50,7 +57,7 @@ const Login = () => {
 				<button
 					disabled={error}
 					className={`link-btn btn ${
-						error ? "disabled-btn" : "btn hover-btn" 
+						error ? "disabled-btn" : "btn hover-btn"
 					}`}
 				>
 					Sign In

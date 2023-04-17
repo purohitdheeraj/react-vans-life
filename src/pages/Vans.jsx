@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getVans } from "../api";
 import { useFetch } from "../hooks/useFetch";
 
 const Vans = () => {
 	const { data: vans, isLoaded, error } = useFetch(getVans);
+	const [searchParams, setSearchParams] = useSearchParams();
 
-	console.log(vans);
+	const typeFilter = searchParams.get("type");
 
 	if (!isLoaded) {
 		return <div>Loading...</div>;
@@ -16,7 +17,13 @@ const Vans = () => {
 		return <div> Error: {error.message}</div>;
 	}
 
-	const vansEl = vans.map((van) => {
+	const displayedItems = typeFilter
+		? vans.filter(
+				(van) => van.type.toLowerCase() === typeFilter
+		  )
+		: vans;
+
+	const vansEl = displayedItems.map((van) => {
 		return (
 			<div key={van.id} className="van">
 				<Link to={van.id}>
@@ -37,9 +44,46 @@ const Vans = () => {
 		);
 	});
 
+	const handleTypeFilter = (key, value) => {
+		setSearchParams((prevParams) => {
+			if (value === null) {
+				prevParams.delete(key);
+			} else {
+				prevParams.set(key, value);
+			}
+
+			return prevParams;
+		});
+	};
+
 	return (
 		<section className="vans-page">
 			<h2>Explore our van options</h2>
+
+			<button
+				onClick={() => handleTypeFilter("type", "simple")}
+			>
+				Simple
+			</button>
+
+			<button
+				onClick={() => handleTypeFilter("type", "rugged")}
+			>
+				Rugged
+			</button>
+
+			<button
+				onClick={() => handleTypeFilter("type", "luxury")}
+			>
+				Luxury
+			</button>
+
+			<button
+				onClick={() => handleTypeFilter("type", null)}
+			>
+				Clear All
+			</button>
+
 			<main className="vans-container">{vansEl}</main>
 		</section>
 	);

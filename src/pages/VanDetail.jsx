@@ -6,6 +6,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 const VanDetail = () => {
 	const params = useParams();
+
 	const {
 		data: van,
 		isLoaded,

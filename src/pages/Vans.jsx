@@ -39,7 +39,12 @@ const Vans = () => {
 					</p>
 				</div>
 
-				<p className="van-type">{van.type}</p>
+				<p
+					className={`van-type filter-${van.type} selected`}
+				>
+					{" "}
+					{van.type}
+				</p>
 			</div>
 		);
 	});
@@ -60,29 +65,43 @@ const Vans = () => {
 		<section className="vans-page">
 			<h2>Explore our van options</h2>
 
-			<button
-				onClick={() => handleTypeFilter("type", "simple")}
-			>
-				Simple
-			</button>
+			<div className="filters">
+				<button
+					onClick={() => handleTypeFilter("type", "simple")}
+					className={`btn filter-simple ${
+						typeFilter === "simple" ? "selected" : null
+					}`}
+				>
+					Simple
+				</button>
 
-			<button
-				onClick={() => handleTypeFilter("type", "rugged")}
-			>
-				Rugged
-			</button>
+				<button
+					onClick={() => handleTypeFilter("type", "rugged")}
+					className={`btn filter-rugged ${
+						typeFilter === "rugged" ? "selected" : null
+					}`}
+				>
+					Rugged
+				</button>
 
-			<button
-				onClick={() => handleTypeFilter("type", "luxury")}
-			>
-				Luxury
-			</button>
+				<button
+					onClick={() => handleTypeFilter("type", "luxury")}
+					className={`btn filter-luxury ${
+						typeFilter === "luxury" ? "selected" : null
+					}`}
+				>
+					Luxury
+				</button>
 
-			<button
-				onClick={() => handleTypeFilter("type", null)}
-			>
-				Clear All
-			</button>
+				{typeFilter ? (
+					<button
+						onClick={() => handleTypeFilter("type", null)}
+						className={`btn filter-clear`}
+					>
+						Clear All
+					</button>
+				) : null}
+			</div>
 
 			<main className="vans-container">{vansEl}</main>
 		</section>

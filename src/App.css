@@ -7,6 +7,10 @@
 	--FOOTER-COLOR: #aaaaaa;
 	--CTA-LT-ORANGE: #ffcc8d;
 	--BORDER-LT-GRAY: #d1d5db;
+	--FILTER-LT-CREAM: #ffead0;
+	--FILTER-ORANGE: #e17654;
+	--FILTER-LUXURY: #161616;
+	--FILTER-RUGGED: #115e59;
 	/* general color */
 	--BLACK: #000;
 	--WHITE: #fff;
@@ -209,6 +213,56 @@ body {
 	padding: 5.5rem 2.5rem;
 }
 
+/* filter vans-page */
+
+.vans-page .filters {
+	margin: 2.2rem 0;
+	display: flex;
+}
+
+.vans-page .btn {
+	padding: 6px;
+	text-align: center;
+	background: var(--FILTER-LT-CREAM);
+	color: var(--LINK-COLOR-GRAY);
+	border: none;
+	margin-right: 2rem;
+	width: 10rem;
+	border-radius: 5px;
+}
+
+.vans-page .filters .btn:hover,
+.vans-page .filters .btn.selected {
+	color: var(--FILTER-LT-CREAM);
+	border: none;
+	outline: none;
+}
+
+.vans-page .filter-simple:hover,
+.filter-simple.selected {
+	background: var(--FILTER-ORANGE);
+}
+
+.vans-page .filter-rugged:hover,
+.filter-rugged.selected {
+	background: var(--FILTER-RUGGED);
+}
+
+.vans-page .filter-luxury:hover,
+.filter-luxury.selected {
+	background: var(--FILTER-LUXURY);
+}
+
+.vans-page .filters .filter-clear {
+	background: transparent;
+	color: var(--LINK-COLOR-GRAY);
+	text-decoration: underline;
+}
+
+.vans-page .filters .filter-clear:hover {
+	color: var(--FOOTER-BG-COLOR);
+}
+
 .vans-page h2 {
 	margin: 2.5rem 0;
 	font-size: 3.2rem;
@@ -216,6 +270,7 @@ body {
 }
 
 .vans-container {
+	margin-top: 5.5rem;
 	display: grid;
 	grid-template-columns: repeat(
 		auto-fill,
@@ -250,13 +305,13 @@ body {
 }
 
 .van-type {
-	border: 1px solid;
 	padding: 0.5rem 1rem;
 	text-align: center;
 	max-width: 10rem;
 	font-weight: 600;
 	border-radius: 5px;
 	text-transform: capitalize;
+	color: var(--FILTER-LT-CREAM);
 }
 
 /* Van Detail */

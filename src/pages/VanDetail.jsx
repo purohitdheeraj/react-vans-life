@@ -1,7 +1,64 @@
 import React from "react";
+import {
+	useParams,
+	Link,
+	useLocation,
+} from "react-router-dom";
+import { useFetch } from "../hooks/useFetch";
+import { getVans } from "../api";
+import { FaArrowLeft } from "react-icons/fa";
 
 const VanDetail = () => {
-	return <div>VanDetail</div>;
+	const params = useParams();
+
+	const { state } = useLocation();
+
+	const {
+		data: van,
+		isLoaded,
+		error,
+	} = useFetch(getVans, params.id);
+
+	if (!isLoaded) {
+		return <div>Loading...</div>;
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
+
+	const searchParams = state?.search || "";
+
+	const vanType = state?.type || "all";
+
+	return (
+		<section className="van-detail-page">
+			<div key={van.id} className="van">
+				<Link
+					to={`..${searchParams}`}
+					relative="path"
+					className="back-vans-link styled-link"
+				>
+					<FaArrowLeft className="arrow-left" />
+					Back to {vanType} vans
+				</Link>
+
+				<img src={van.imageUrl} alt={van.name} />
+
+				<p className="van-type">{van.type}</p>
+
+				<h2>{van.name}</h2>
+				<p className="van-price">
+					<strong>${van.price}</strong>
+					/day
+				</p>
+				<p>{van.description}</p>
+				<button to="/" className="link-btn btn hover-btn">
+					Rent this van
+				</button>
+			</div>
+		</section>
+	);
 };
 
 export default VanDetail;

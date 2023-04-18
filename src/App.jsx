@@ -4,7 +4,11 @@ import {
 	Route,
 	RouterProvider,
 } from "react-router-dom";
-import { ErrorBoundary, Layout } from "./components";
+import {
+	AuthReq,
+	ErrorBoundary,
+	Layout,
+} from "./components";
 import "./reset.css";
 import "./App.css";
 import {
@@ -16,6 +20,7 @@ import {
 	Vans,
 	PageNotFound,
 } from "./pages";
+import "./server";
 
 const App = () => {
 	const router = createBrowserRouter(
@@ -29,7 +34,9 @@ const App = () => {
 				<Route path="about" element={<About />} />
 				<Route path="vans" element={<Vans />} />
 				<Route path="vans/:id" element={<VanDetail />} />
-				<Route path="host" element={<Host />} />
+				<Route element={<AuthReq />}>
+					<Route path="host" element={<Host />} />
+				</Route>
 				<Route path="login" element={<Login />} />
 				<Route path="*" element={<PageNotFound />} />
 			</Route>

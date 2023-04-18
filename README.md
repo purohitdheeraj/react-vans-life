@@ -1,11 +1,11 @@
-# Hare Krishna
+## vans life
 
 ### Features
 
-- [ ] Routes
-- [ ] Home
-- [ ] About
-- [ ] Vans
-- [ ] VanDetail
-- [ ] Form
-- [ ] CSS - Basic Layout and States
+- [x] Routes
+- [x] Home
+- [x] About
+- [x] Vans
+- [x] VanDetail
+- [x] Form
+- [x] CSS - Basic Layout and States

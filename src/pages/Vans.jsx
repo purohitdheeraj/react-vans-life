@@ -26,7 +26,13 @@ const Vans = () => {
 	const vansEl = displayedItems.map((van) => {
 		return (
 			<div key={van.id} className="van">
-				<Link to={van.id}>
+				<Link
+					to={van.id}
+					state={{
+						search: `?${searchParams.toString()}`,
+						type: typeFilter,
+					}}
+				>
 					<img src={van.imageUrl} alt={van.name} />
 				</Link>
 

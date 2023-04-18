@@ -1,11 +1,17 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import {
+	useParams,
+	Link,
+	useLocation,
+} from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { getVans } from "../api";
 import { FaArrowLeft } from "react-icons/fa";
 
 const VanDetail = () => {
 	const params = useParams();
+
+	const { state } = useLocation();
 
 	const {
 		data: van,
@@ -21,16 +27,20 @@ const VanDetail = () => {
 		return <div>{error}</div>;
 	}
 
+	const searchParams = state?.search || "";
+
+	const vanType = state?.type || "all";
+
 	return (
 		<section className="van-detail-page">
 			<div key={van.id} className="van">
 				<Link
-					to=".."
+					to={`..${searchParams}`}
 					relative="path"
 					className="back-vans-link styled-link"
 				>
 					<FaArrowLeft className="arrow-left" />
-					Back To Vans
+					Back to {vanType} vans
 				</Link>
 
 				<img src={van.imageUrl} alt={van.name} />

@@ -29,7 +29,6 @@ const App = () => {
 			<Route
 				path="/"
 				element={<Layout />}
-				errorElement={<ErrorBoundary />}
 			>
 				<Route index element={<Home />} />
 				<Route path="about" element={<About />} />
@@ -37,6 +36,7 @@ const App = () => {
 					path="vans"
 					element={<Vans />}
 					loader={loader}
+					errorElement={<ErrorBoundary />}
 				/>
 				<Route path="vans/:id" element={<VanDetail />} />
 				<Route element={<AuthReq />}>

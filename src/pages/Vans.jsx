@@ -5,7 +5,6 @@ import {
 	useSearchParams,
 } from "react-router-dom";
 import { getVans } from "../api";
-import { useFetch } from "../hooks/useFetch";
 
 export async function loader() {
 	return await getVans();

@@ -45,7 +45,7 @@ const VanDetail = () => {
 
 				<img src={van.imageUrl} alt={van.name} />
 
-				<p className="van-type">{van.type}</p>
+				<p className={`van-type filter-${van.type} selected`}>{van.type}</p>
 
 				<h2>{van.name}</h2>
 				<p className="van-price">

@@ -21,6 +21,7 @@ import {
 	PageNotFound,
 } from "./pages";
 import "./server";
+import { loader } from "./pages/Vans";
 
 const App = () => {
 	const router = createBrowserRouter(
@@ -28,11 +29,15 @@ const App = () => {
 			<Route
 				path="/"
 				element={<Layout />}
-				errorElement={<ErrorBoundary />}
 			>
 				<Route index element={<Home />} />
 				<Route path="about" element={<About />} />
-				<Route path="vans" element={<Vans />} />
+				<Route
+					path="vans"
+					element={<Vans />}
+					loader={loader}
+					errorElement={<ErrorBoundary />}
+				/>
 				<Route path="vans/:id" element={<VanDetail />} />
 				<Route element={<AuthReq />}>
 					<Route path="host" element={<Host />} />

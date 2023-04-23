@@ -3,10 +3,10 @@ export async function getVans(id) {
 
 	const response = await fetch(url);
 	if (!response.ok) {
-		throw Error(
-			`${response.statusText} ${response.status}
-      `
-		);
+		const error = new Error("Failed to Fetch");
+		error.status = response.status;
+		error.statusText = response.statusText;
+		throw error;
 	}
 	const parseResponse = await response.json();
 	return parseResponse.vans;

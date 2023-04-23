@@ -1,21 +1,22 @@
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import {
+	Link,
+	useLoaderData,
+	useSearchParams,
+} from "react-router-dom";
 import { getVans } from "../api";
-import { useFetch } from "../hooks/useFetch";
+
+export async function loader() {
+	return await getVans();
+}
 
 const Vans = () => {
-	const { data: vans, isLoaded, error } = useFetch(getVans);
+	// const { data: vans, isLoaded, error } = useFetch(getVans);
 	const [searchParams, setSearchParams] = useSearchParams();
 
+	const vans = useLoaderData();
+
 	const typeFilter = searchParams.get("type");
-
-	if (!isLoaded) {
-		return <div>Loading...</div>;
-	}
-
-	if (error) {
-		return <div> Error: {error.message}</div>;
-	}
 
 	const displayedItems = typeFilter
 		? vans.filter(

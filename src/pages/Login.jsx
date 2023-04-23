@@ -1,32 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import {
+	Link,
+	useLocation,
+	useNavigate,
+} from "react-router-dom";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState(null);
-	const navigateMessage = useLocation();
+	const locationObj = useLocation();
+	const navigateToRoute =
+		locationObj.state?.from?.pathname || "/";
+
+	const navigate = useNavigate();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		console.log(email, password);
+
+		navigate(navigateToRoute, { replace: true });
+		
+		
 		setEmail("");
 		setPassword("");
 	};
 
-	useEffect(() => {
-		setError(true);
-		if (email && password) {
-			setError(false);
-		}
-	}, [email, password]);
 
 	return (
 		<section className="login-page">
 			<h2>Sign in to your account</h2>
-			<p className="re-direct">
-				{navigateMessage.state?.message}
-			</p>
+			<p className="re-direct"></p>
 			<form
 				onSubmit={submitHandler}
 				className="login-form form"

@@ -4,11 +4,7 @@ import {
 	Route,
 	RouterProvider,
 } from "react-router-dom";
-import {
-	AuthReq,
-	ErrorBoundary,
-	Layout,
-} from "./components";
+import { ErrorBoundary, Layout } from "./components";
 import "./reset.css";
 import "./App.css";
 import {
@@ -26,10 +22,7 @@ import { loader } from "./pages/Vans";
 const App = () => {
 	const router = createBrowserRouter(
 		createRoutesFromElements(
-			<Route
-				path="/"
-				element={<Layout />}
-			>
+			<Route path="/" element={<Layout />}>
 				<Route index element={<Home />} />
 				<Route path="about" element={<About />} />
 				<Route
@@ -39,9 +32,9 @@ const App = () => {
 					errorElement={<ErrorBoundary />}
 				/>
 				<Route path="vans/:id" element={<VanDetail />} />
-				<Route element={<AuthReq />}>
-					<Route path="host" element={<Host />} />
-				</Route>
+
+				<Route path="host" element={<Host />} />
+
 				<Route path="login" element={<Login />} />
 				<Route path="*" element={<PageNotFound />} />
 			</Route>

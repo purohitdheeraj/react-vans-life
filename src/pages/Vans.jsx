@@ -11,7 +11,6 @@ export async function loader() {
 }
 
 const Vans = () => {
-	// const { data: vans, isLoaded, error } = useFetch(getVans);
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const vans = useLoaderData();

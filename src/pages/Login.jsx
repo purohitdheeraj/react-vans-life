@@ -1,30 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
 	Link,
 	useLocation,
 	useNavigate,
 } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [error, setError] = useState(null);
-	const locationObj = useLocation();
-	const navigateToRoute =
-		locationObj.state?.from?.pathname || "/";
 
+	const { userLogin } = useAuth();
 	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || "/";
 
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		navigate(navigateToRoute, { replace: true });
-		
-		
+		userLogin();
+		navigate(from, { replace: true });
+
 		setEmail("");
 		setPassword("");
 	};
-
 
 	return (
 		<section className="login-page">
@@ -54,12 +53,7 @@ const Login = () => {
 					className="login-input input"
 					value={password}
 				/>
-				<button
-					disabled={error}
-					className={`link-btn btn ${
-						error ? "disabled-btn" : "btn hover-btn"
-					}`}
-				>
+				<button className={`link-btn btn btn hover-btn`}>
 					Sign In
 				</button>
 				<p className="re-direct">

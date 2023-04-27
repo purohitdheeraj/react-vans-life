@@ -7,10 +7,10 @@ import {
 import { useAuth } from "../context/AuthContext";
 
 const ProtectedLayout = () => {
-	const { isLoggedIn } = useAuth();
+	const { loginState } = useAuth();
 	const location = useLocation();
 
-	if (!isLoggedIn) {
+	if (!loginState) {
 		return (
 			<Navigate
 				to="login"

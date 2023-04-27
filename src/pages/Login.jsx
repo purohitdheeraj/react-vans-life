@@ -22,6 +22,7 @@ const Login = () => {
 
 		userLogin();
 		navigate(from, { replace: true });
+		
 		setEmail("");
 		setPassword("");
 	};

@@ -5,7 +5,7 @@ import { AuthProvider } from "../context/AuthContext";
 const AuthLayout = () => {
 	const outlet = useOutlet();
 
-	return <AuthProvider>{outlet};</AuthProvider>;
+	return <AuthProvider>{outlet}</AuthProvider>;
 };
 
 export default AuthLayout;

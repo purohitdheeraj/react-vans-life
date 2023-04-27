@@ -13,14 +13,15 @@ const Login = () => {
 	const { userLogin } = useAuth();
 	const navigate = useNavigate();
 	const location = useLocation();
+
 	const from = location.state?.from?.pathname || "/";
+	const redirectMsg = location.state?.message || "";
 
 	const submitHandler = (e) => {
 		e.preventDefault();
 
 		userLogin();
 		navigate(from, { replace: true });
-
 		setEmail("");
 		setPassword("");
 	};
@@ -28,7 +29,7 @@ const Login = () => {
 	return (
 		<section className="login-page">
 			<h2>Sign in to your account</h2>
-			<p className="re-direct"></p>
+			<p className="re-direct">{redirectMsg}</p>
 			<form
 				onSubmit={submitHandler}
 				className="login-form form"

@@ -23,6 +23,8 @@ import {
 } from "./pages";
 import "./server";
 import { loader } from "./pages/Vans";
+import { loader as vanDetailLoader } from "./pages/VanDetail";
+import { loader as hostLoader } from "./pages/Host";
 
 const App = () => {
 	const router = createBrowserRouter(
@@ -37,10 +39,18 @@ const App = () => {
 						loader={loader}
 						errorElement={<ErrorBoundary />}
 					/>
-					<Route path="vans/:id" element={<VanDetail />} />
+					<Route
+						path="vans/:id"
+						element={<VanDetail />}
+						loader={vanDetailLoader}
+					/>
 
 					<Route element={<ProtectedLayout />}>
-						<Route path="host" element={<Host />} />
+						<Route
+							path="host"
+							element={<Host />}
+							loader={hostLoader}
+						/>
 					</Route>
 
 					<Route path="login" element={<Login />} />

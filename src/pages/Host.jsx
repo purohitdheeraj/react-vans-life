@@ -1,10 +1,18 @@
 import React from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router";
+import { useNavigate, useLoaderData } from "react-router";
+
+import { getVans } from "../api";
+
+export const loader = async () => {
+	return await getVans();
+};
 
 const Host = () => {
 	const { userLogout } = useAuth();
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
+	const vans = useLoaderData();
+	console.log(vans);
 
 	return (
 		<div>

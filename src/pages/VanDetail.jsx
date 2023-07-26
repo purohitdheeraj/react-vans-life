@@ -1,31 +1,21 @@
 import React from "react";
 import {
-	useParams,
 	Link,
 	useLocation,
+	useLoaderData,
 } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
 import { getVans } from "../api";
 import { FaArrowLeft } from "react-icons/fa";
 
-const VanDetail = () => {
-	const params = useParams();
+export const loader = async ({ params }) => {
+	return await getVans(params.id);
+};
 
+const VanDetail = () => {
 	const { state } = useLocation();
 
-	const {
-		data: van,
-		isLoaded,
-		error,
-	} = useFetch(getVans, params.id);
-
-	if (!isLoaded) {
-		return <div>Loading...</div>;
-	}
-
-	if (error) {
-		return <div>{error}</div>;
-	}
+	const van = useLoaderData();
+	console.log(van);
 
 	const searchParams = state?.search || "";
 
@@ -45,7 +35,11 @@ const VanDetail = () => {
 
 				<img src={van.imageUrl} alt={van.name} />
 
-				<p className={`van-type filter-${van.type} selected`}>{van.type}</p>
+				<p
+					className={`van-type filter-${van.type} selected`}
+				>
+					{van.type}
+				</p>
 
 				<h2>{van.name}</h2>
 				<p className="van-price">

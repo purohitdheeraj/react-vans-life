@@ -298,12 +298,6 @@ body {
 	border-radius: 5px;
 }
 
-.vans-container .van img:hover {
-	filter: saturate(30%);
-	transform: scale(1.05);
-	transition: all 1s;
-}
-
 .van-type {
 	padding: 0.5rem 1rem;
 	text-align: center;

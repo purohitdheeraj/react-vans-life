@@ -1,32 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import {
+	Link,
+	useLocation,
+	useNavigate,
+} from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [error, setError] = useState(null);
-	const navigateMessage = useLocation();
+
+	const { userLogin } = useAuth();
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	const from = location.state?.from?.pathname || "/";
+	const redirectMsg = location.state?.message || "";
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		console.log(email, password);
+
+		userLogin();
+		navigate(from, { replace: true });
+		
 		setEmail("");
 		setPassword("");
 	};
 
-	useEffect(() => {
-		setError(true);
-		if (email && password) {
-			setError(false);
-		}
-	}, [email, password]);
-
 	return (
 		<section className="login-page">
 			<h2>Sign in to your account</h2>
-			<p className="re-direct">
-				{navigateMessage.state?.message}
-			</p>
+			<p className="re-direct">{redirectMsg}</p>
 			<form
 				onSubmit={submitHandler}
 				className="login-form form"
@@ -51,12 +55,7 @@ const Login = () => {
 					className="login-input input"
 					value={password}
 				/>
-				<button
-					disabled={error}
-					className={`link-btn btn ${
-						error ? "disabled-btn" : "btn hover-btn"
-					}`}
-				>
+				<button className={`link-btn btn btn hover-btn`}>
 					Sign In
 				</button>
 				<p className="re-direct">
